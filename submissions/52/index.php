@@ -1,3 +1,34 @@
+<?php
+/**
+ * NovaPulse - Next-Gen Web Platform & Tech Agency Template
+ * Server-side PHP script rendering dynamic header, CSRF security tokens, and visitor stats.
+ */
+
+session_start();
+
+// Generate CSRF Token for Forms
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+$csrfToken = $_SESSION['csrf_token'];
+
+// Simple Visitor Counter Logic in PHP
+$counterFile = __DIR__ . '/data/visitor_count.txt';
+$visitorCount = 12480;
+
+if (file_exists($counterFile)) {
+    $visitorCount = (int)file_get_contents($counterFile) + 1;
+} else {
+    if (!is_dir(__DIR__ . '/data')) {
+        mkdir(__DIR__ . '/data', 0777, true);
+    }
+}
+file_put_contents($counterFile, (string)$visitorCount);
+
+// Dynamic Current Year & Date
+$currentYear = date('Y');
+$serverTimeFormatted = date('M d, Y H:i T');
+?>
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
@@ -73,7 +104,7 @@
                 <span class="stat-label">Deployments</span>
               </div>
               <div class="stat-item">
-                <span class="stat-number" data-target="12480" data-suffix="">0</span>
+                <span class="stat-number" data-target="<?php echo $visitorCount; ?>" data-suffix="">0</span>
                 <span class="stat-label">Live Visitors Tracked</span>
               </div>
             </div>
@@ -224,6 +255,7 @@
       <form id="contact-form">
         <!-- Anti-spam Honeypot -->
         <input type="text" name="website_hp" id="website_hp" class="hp-field" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="csrf_token" value="<?php echo $csrfToken; ?>">
 
         <div class="form-group">
           <label for="contact-name" class="form-label">Full Name</label>
@@ -265,6 +297,9 @@
             <span>Nova<span class="text-gradient">Pulse</span></span>
           </a>
           <p>Next-generation digital experiences built with HTML5, CSS3, JavaScript, and PHP.</p>
+          <div style="font-size: 0.8rem; color: var(--text-muted);">
+            Server Time: <?php echo $serverTimeFormatted; ?>
+          </div>
         </div>
 
         <div>
@@ -298,7 +333,7 @@
       </div>
 
       <div class="footer-bottom">
-        <div>&copy; 2026 NovaPulse Platform. All rights reserved.</div>
+        <div>&copy; <?php echo $currentYear; ?> NovaPulse Platform. All rights reserved.</div>
         <div style="display: flex; gap: 1.5rem;">
           <a href="#" style="color: var(--text-muted); text-decoration: none;">Privacy Policy</a>
           <a href="#" style="color: var(--text-muted); text-decoration: none;">Terms of Service</a>

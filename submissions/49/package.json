@@ -1,0 +1,14 @@
+{
+  "name": "cyber-strike-neon-vanguard",
+  "version": "1.0.0",
+  "description": "Cyberpunk Arcade Rogue-Lite Shooter Webpage Game with HTML, CSS, JavaScript and PHP",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}

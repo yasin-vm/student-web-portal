@@ -1,0 +1,56 @@
+[
+  {
+    "id": "proj-1",
+    "title": "Quantum AI Dashboard",
+    "category": "ai",
+    "description": "High-throughput real-time predictive analytics matrix featuring neural architecture data feeds and custom webGL visualizers.",
+    "image": "images/dashboard.png",
+    "tags": ["AI Neural Net", "WebGL", "PHP REST API"],
+    "link": "#"
+  },
+  {
+    "id": "proj-2",
+    "title": "Nexus Cloud SaaS Platform",
+    "category": "saas",
+    "description": "Enterprise cloud resource optimizer with distributed server metrics, automated load balancing, and instant alert system.",
+    "image": "images/hero.png",
+    "tags": ["Cloud SaaS", "Microservices", "Vue/PHP"],
+    "link": "#"
+  },
+  {
+    "id": "proj-3",
+    "title": "Aether Web3 DEX Portal",
+    "category": "web",
+    "description": "Decentralized liquidity swapping aggregator with ultra-low latency transaction streaming and custom order book UI.",
+    "image": "images/dashboard.png",
+    "tags": ["Web3", "Smart Contracts", "JavaScript"],
+    "link": "#"
+  },
+  {
+    "id": "proj-4",
+    "title": "Hyperion Mobile Banking App",
+    "category": "mobile",
+    "description": "Biometric-secured mobile payment wallet supporting multi-currency instantaneous wire transfers and AI fraud detection.",
+    "image": "images/hero.png",
+    "tags": ["Mobile Native", "Security", "RESTful API"],
+    "link": "#"
+  },
+  {
+    "id": "proj-5",
+    "title": "Vortex Autonomous Workflow Engine",
+    "category": "ai",
+    "description": "No-code AI workflow orchestrator integrating 200+ third-party tools with intelligent decision tree processing.",
+    "image": "images/dashboard.png",
+    "tags": ["AI Automation", "Workflow", "PHP Engine"],
+    "link": "#"
+  },
+  {
+    "id": "proj-6",
+    "title": "Pulse Analytics Engine",
+    "category": "saas",
+    "description": "Real-time user heatmaps, funnel conversion tracking, and session recording software designed for high-scale e-commerce.",
+    "image": "images/hero.png",
+    "tags": ["SaaS Platform", "Big Data", "Realtime"],
+    "link": "#"
+  }
+]

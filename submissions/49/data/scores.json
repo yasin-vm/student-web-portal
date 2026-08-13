@@ -1,0 +1,50 @@
+[
+  {
+    "player_name": "CYBER_ACE",
+    "score": 125000,
+    "wave": 28,
+    "ship_type": "Titan",
+    "kills": 482,
+    "created_at": "2026-08-13 22:00:00"
+  },
+  {
+    "player_name": "NEON_VIPER",
+    "score": 98400,
+    "wave": 24,
+    "ship_type": "Phantom",
+    "kills": 395,
+    "created_at": "2026-08-13 20:00:00"
+  },
+  {
+    "player_name": "TEST_PILOT",
+    "score": 88000,
+    "wave": 21,
+    "ship_type": "Phantom",
+    "kills": 340,
+    "created_at": "2026-08-13 18:43:34"
+  },
+  {
+    "player_name": "VANGUARD_01",
+    "score": 76200,
+    "wave": 19,
+    "ship_type": "Vanguard",
+    "kills": 310,
+    "created_at": "2026-08-13 18:00:00"
+  },
+  {
+    "player_name": "GHOST_RUNNER",
+    "score": 54100,
+    "wave": 15,
+    "ship_type": "Phantom",
+    "kills": 220,
+    "created_at": "2026-08-13 12:00:00"
+  },
+  {
+    "player_name": "TITAN_CRUSHER",
+    "score": 41800,
+    "wave": 12,
+    "ship_type": "Titan",
+    "kills": 175,
+    "created_at": "2026-08-12 15:00:00"
+  }
+]
