@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔒 Top Secret Delivery for Swetha...</title>
+    <meta name="description" content="A confidential encrypted surprise has arrived for Swetha. Do not open until you are alone... 🤫💖">
+    <meta property="og:title" content="🤫 Top Secret Delivery for Swetha...">
+    <meta property="og:description" content="Someone special left an encrypted message for you. Tap to unlock the mystery... 🔒✨">
+    <meta property="og:type" content="website">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Ambient Heart Particle Canvas Background -->
+    <canvas id="heartCanvas"></canvas>
+
+    <!-- Playful "Are You Dumb?" Entrance Gate -->
+    <div id="loveGate" class="love-gate-overlay">
+        <div class="love-gate-card glass-card text-center" id="loveGateCard">
+            <div class="gate-heart-icon">🤪</div>
+            <h2 class="gate-title">Quick Question for Swetha... 😜</h2>
+            <p class="gate-question">Are you dumb? 🤪</p>
+            <p id="gateTeaseMsg" class="gate-tease-msg"></p>
+            
+            <div class="gate-buttons-wrapper">
+                <button id="yesLoveBtn" class="btn btn-primary btn-love-yes">Yes 🤣</button>
+                <button id="noLoveBtn" class="btn btn-secondary btn-love-no">No 🙈</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Audio & Love Controls -->
+    <div class="floating-controls">
+        <button id="musicToggleBtn" class="control-btn" aria-label="Toggle Romantic Music">
+            <span class="btn-icon">🎵</span>
+            <span class="btn-text">Romantic Music</span>
+        </button>
+        <button id="burstLoveBtn" class="control-btn heart-burst-btn" aria-label="Send Love Burst">
+            <span class="btn-icon">💖</span>
+            <span class="btn-text">Send Kisses</span>
+        </button>
+    </div>
+
+    <!-- Main App Wrapper -->
+    <main class="app-container">
+
+        <!-- HERO SECTION -->
+        <section class="hero-section" id="hero">
+            <div class="hero-content glass-card">
+                <div class="badge-pill">
+                    <span class="sparkle">✨</span> 6th Month Anniversary Milestone <span class="sparkle">✨</span>
+                </div>
+                <h1 class="hero-title">Happy Anniversary, <span class="highlight-name">Swetha!</span></h1>
+                <p class="hero-subtitle">Half a year of pure happiness, laughter, and endless love with you.</p>
+
+                <!-- Live Counter Grid -->
+                <div class="timer-container">
+                    <h3 class="timer-heading">We have been together for:</h3>
+                    <div class="timer-grid">
+                        <div class="timer-card">
+                            <span class="timer-value" id="countDays">00</span>
+                            <span class="timer-label">Days</span>
+                        </div>
+                        <div class="timer-card">
+                            <span class="timer-value" id="countHours">00</span>
+                            <span class="timer-label">Hours</span>
+                        </div>
+                        <div class="timer-card">
+                            <span class="timer-value" id="countMinutes">00</span>
+                            <span class="timer-label">Minutes</span>
+                        </div>
+                        <div class="timer-card">
+                            <span class="timer-value" id="countSeconds">00</span>
+                            <span class="timer-label">Seconds</span>
+                        </div>
+                    </div>
+                    <p class="timer-subtext">...and I love you more with every single tick of the clock! ⏳❤️</p>
+                </div>
+
+                <a href="#envelope" class="scroll-down-btn">
+                    <span>Open My Love Letter</span>
+                    <div class="down-arrow">↓</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- DIGITAL 3D LOVE ENVELOPE SECTION -->
+        <section class="section-container" id="envelope">
+            <div class="section-header text-center">
+                <span class="section-badge">💌 Sealed With A Kiss</span>
+                <h2 class="section-title">A Special Letter For You</h2>
+                <p class="section-description">Click the wax seal below to open your anniversary letter!</p>
+            </div>
+
+            <div class="envelope-wrapper">
+                <div class="envelope-card" id="envelopeCard">
+                    <div class="envelope-flap"></div>
+                    <div class="envelope-pocket"></div>
+                    <div class="wax-seal" id="waxSeal">
+                        <span class="seal-text">S & 💕</span>
+                    </div>
+                    <div class="letter-preview-text">Tap Seal to Open 💖</div>
+                </div>
+            </div>
+
+            <!-- Modal Love Letter Overlay -->
+            <div class="letter-modal-overlay" id="letterModal">
+                <div class="letter-paper glass-card">
+                    <button class="close-modal-btn" id="closeLetterBtn">&times;</button>
+                    <div class="letter-header">
+                        <span class="stamp-icon">🌹</span>
+                        <h3 id="letterTitle">To My Dearest Swetha</h3>
+                        <p class="letter-date" id="letterDate">August 13, 2026</p>
+                    </div>
+                    <div class="letter-divider"></div>
+                    <div class="letter-body" id="letterBody">
+                        <!-- Populated dynamically from config.js -->
+                    </div>
+                    <div class="letter-footer">
+                        <p class="letter-signature" id="letterSignature">Forever & Always Yours, ❤️</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- OUR STORY TIMELINE -->
+        <section class="section-container" id="timeline">
+            <div class="section-header text-center">
+                <span class="section-badge">📖 Our Journey</span>
+                <h2 class="section-title">6 Months of Memories</h2>
+                <p class="section-description">Every chapter of our story has been my absolute favorite.</p>
+            </div>
+
+            <div class="timeline-container" id="timelineList">
+                <!-- Dynamic timeline cards populated from config.js -->
+            </div>
+        </section>
+
+        <!-- 100 REASONS WHY I LOVE YOU CARD SHUFFLER -->
+        <section class="section-container" id="reasons">
+            <div class="section-header text-center">
+                <span class="section-badge">💝 From My Heart</span>
+                <h2 class="section-title">Reasons Why I Love You</h2>
+                <p class="section-description">Just a few of the millions of reasons you mean the world to me!</p>
+            </div>
+
+            <div class="reasons-wrapper">
+                <div class="reason-card glass-card" id="reasonCard">
+                    <div class="reason-card-inner">
+                        <div class="reason-number" id="reasonNumber">Reason #1</div>
+                        <div class="reason-text" id="reasonText">Your contagious smile that brightens up my worst days.</div>
+                        <div class="card-decor">💕</div>
+                    </div>
+                </div>
+                <div class="reasons-actions">
+                    <button class="btn btn-primary" id="nextReasonBtn">Next Reason ✨</button>
+                    <button class="btn btn-secondary" id="randomReasonBtn">Surprise Me! 🎲</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- POLAROID MEMORY GALLERY -->
+        <section class="section-container" id="gallery">
+            <div class="section-header text-center">
+                <span class="section-badge">📸 Photo Vault</span>
+                <h2 class="section-title">Our Memory Album</h2>
+                <p class="section-description">Capturing our favorite smiles and sweetest moments together.</p>
+            </div>
+
+
+            <!-- Upload / Add Photo Bar -->
+            <div class="gallery-upload-bar glass-card">
+                <div class="upload-info">
+                    <span class="upload-icon">📷</span>
+                    <div>
+                        <strong>Add Your Own Photos Anytime!</strong>
+                        <p>Drop photos here or put PNGs in the <code>assets/</code> folder to replace!</p>
+                    </div>
+                </div>
+                <label for="photoUploader" class="btn btn-sm btn-outline">
+                    <span>Upload Photo</span>
+                    <input type="file" id="photoUploader" accept="image/*" multiple hidden>
+                </label>
+            </div>
+
+            <div class="polaroid-grid" id="polaroidGrid">
+                <!-- Dynamically generated polaroid photo frames from config.js -->
+            </div>
+        </section>
+
+        <!-- LIGHTBOX MODAL FOR GALLERY -->
+        <div class="lightbox-overlay" id="lightboxModal">
+            <span class="lightbox-close" id="lightboxClose">&times;</span>
+            <div class="lightbox-content">
+                <img id="lightboxImg" src="" alt="Memory Photo">
+                <div class="lightbox-caption">
+                    <h4 id="lightboxTitle"></h4>
+                    <p id="lightboxText"></p>
+                    <span id="lightboxDate" class="lightbox-date"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- RELATIONSHIP QUIZ GAME -->
+        <section class="section-container" id="quiz">
+            <div class="section-header text-center">
+                <span class="section-badge">🎯 Relationship Game</span>
+                <h2 class="section-title">How Well Do You Know Our Story?</h2>
+                <p class="section-description">Test your memory on our 6-month journey!</p>
+            </div>
+
+            <div class="quiz-card glass-card">
+                <div class="quiz-progress-bar">
+                    <div class="quiz-progress-fill" id="quizProgress"></div>
+                </div>
+
+                <div id="quizContainer">
+                    <div class="quiz-header-meta">
+                        <span class="quiz-step" id="quizStepText">Question 1 of 4</span>
+                        <span class="quiz-score" id="quizScoreText">Score: 0</span>
+                    </div>
+                    <h3 class="quiz-question" id="quizQuestion">Loading question...</h3>
+                    <div class="quiz-options-grid" id="quizOptions">
+                        <!-- Dynamic options buttons -->
+                    </div>
+                    <div class="quiz-feedback" id="quizFeedback"></div>
+                </div>
+
+                <!-- Quiz Completion Card (Hidden by default) -->
+                <div id="quizResult" class="quiz-result-container hidden">
+                    <div class="trophy-icon">🏆</div>
+                    <h3>Quiz Completed!</h3>
+                    <p class="result-score-msg" id="resultScoreMsg">You scored 4 out of 4!</p>
+                    <p class="result-quote">You remember every sweet detail of our love story! I am so lucky to have you. ❤️</p>
+                    <button class="btn btn-primary" id="retryQuizBtn">Play Again 🔄</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER & FINAL LOVE BANNER -->
+        <footer class="footer-section">
+            <div class="footer-content text-center">
+                <div class="giant-heart-anim">❤️</div>
+                <h2 class="footer-title">I Love You, Swetha!</h2>
+                <p class="footer-subtitle">Thank you for making the last 6 months the best 6 months of my life.</p>
+                <div class="footer-actions">
+                    <button class="btn btn-lg btn-love" id="finalHugsBtn">
+                        <span class="heart-icon">💋</span> Send 1,000 Hugs & Kisses!
+                    </button>
+                </div>
+                <p class="footer-copyright">Crafted with endless love & affection for Swetha • August 13, 2026</p>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- Canvas Confetti Container for Quiz & Celebration -->
+    <canvas id="confettiCanvas"></canvas>
+
+    <!-- Load Scripts -->
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Student Web Design Portal</title>
+  <meta name="description" content="Management interface for student web development submissions and directory records.">
+  <script type="module" crossorigin src="/assets/app-Bk9u4h-U.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/app-CE5dEv5z.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="header">
+    <div class="container navbar">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">💻</div>
+        <span>Student Web Portal</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="students.html" class="nav-link">Students</a></li>
+          <li><a href="admin.html" class="nav-link nav-btn active">Admin / Dashboard</a></li>
+        </ul>
+      </nav>
+
+      <button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
+    </div>
+  </header>
+
+  <main style="padding: 3rem 0 5rem;">
+    <div class="container">
+      
+      <!-- Page Header & Action Controls -->
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+        <div>
+          <span class="section-tag">Management Console</span>
+          <h1 class="section-title" style="text-align: left;">Admin Dashboard</h1>
+          <p class="section-subtitle" style="text-align: left; margin: 0;">
+            Manage student records, edit profile info, add new students, and update project statuses.
+          </p>
+        </div>
+
+        <div>
+          <button id="btn-open-add" class="btn btn-primary">
+            ➕ Add Student
+          </button>
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="stats-grid admin-stats">
+        <div class="stat-card">
+          <div class="stat-icon stat-icon-1">👥</div>
+          <div>
+            <div class="stat-number" id="adm-stat-total">60</div>
+            <div class="stat-label">Total Students</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon stat-icon-2">🟢</div>
+          <div>
+            <div class="stat-number" id="adm-stat-sub">35</div>
+            <div class="stat-label">Submitted Websites</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon stat-icon-3">⚪</div>
+          <div>
+            <div class="stat-number" id="adm-stat-pend">25</div>
+            <div class="stat-label">Pending Websites</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon stat-icon-4">📊</div>
+          <div>
+            <div class="stat-number" id="adm-stat-rate">58%</div>
+            <div class="stat-label">Completion Rate</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Setup Guide (Collapsible) -->
+      <details class="setup-guide-card">
+        <summary class="setup-guide-header">
+          <div class="setup-guide-title">
+            <span>💡</span> How to Connect Student Website Submissions (Manual Workflow Guide)
+          </div>
+          <span style="font-size: 0.85rem; font-weight: 600; color: var(--primary); text-decoration: underline;">Toggle Setup Guide</span>
+        </summary>
+        <div class="setup-guide-body">
+          <div class="step-card-modern">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span class="step-badge-icon">1</span>
+              <span class="step-title-text">Receive Archive</span>
+            </div>
+            <p class="step-desc-text">Receive student's website submission file (e.g. <code>student.zip</code>).</p>
+          </div>
+
+          <div class="step-card-modern">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span class="step-badge-icon">2</span>
+              <span class="step-title-text">Extract Files</span>
+            </div>
+            <p class="step-desc-text">Unzip file contents on your local computer.</p>
+          </div>
+
+          <div class="step-card-modern">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span class="step-badge-icon">3</span>
+              <span class="step-title-text">Copy Assets</span>
+            </div>
+            <p class="step-desc-text">Place files inside <code>submissions/{rollNumber}/</code> (e.g. <code>submissions/52/</code>).</p>
+          </div>
+
+          <div class="step-card-modern">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span class="step-badge-icon">4</span>
+              <span class="step-title-text">Verify index.html</span>
+            </div>
+            <p class="step-desc-text">Ensure main entry file is named <code>index.html</code>.</p>
+          </div>
+
+          <div class="step-card-modern">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span class="step-badge-icon">5</span>
+              <span class="step-title-text">Save Record</span>
+            </div>
+            <p class="step-desc-text">Click <strong>➕ Add Student</strong> or <strong>Edit</strong> and check <strong>Website Submitted</strong>.</p>
+          </div>
+        </div>
+      </details>
+
+      <!-- Admin Search & Filter Bar -->
+      <div class="directory-toolbar" style="grid-template-columns: 3fr 1fr; margin-top: 2rem;">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="admin-search" class="search-input" placeholder="Search student name or roll number in management table...">
+        </div>
+
+        <div>
+          <select id="admin-status-filter" class="select-control">
+            <option value="">All Statuses</option>
+            <option value="submitted">🟢 Submitted</option>
+            <option value="null">⚪ Not Submitted</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Student Management Table -->
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>Roll No</th>
+              <th>Course</th>
+              <th>Semester</th>
+              <th>Website Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="admin-table-body">
+            <!-- Rendered dynamically by app.js -->
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Add Student Modal -->
+  <div class="modal-backdrop" id="modal-add-student">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Add New Student</h3>
+        <button class="modal-close-btn">&times;</button>
+      </div>
+      <form id="form-add-student">
+        <div class="form-group">
+          <label class="form-label">Full Name</label>
+          <input type="text" id="add-name" class="form-control" required placeholder="e.g. Vikram Seth">
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label">Roll Number (Unique)</label>
+            <input type="text" id="add-roll" class="form-control" required placeholder="e.g. 61">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Course Program</label>
+            <select id="add-course" class="form-control" required>
+              <option value="B.Tech Computer Science">B.Tech Computer Science</option>
+              <option value="B.Tech Electronics & Communication">B.Tech ECE</option>
+              <option value="B.Tech Information Technology">B.Tech IT</option>
+              <option value="BCA">BCA</option>
+              <option value="MCA">MCA</option>
+            </select>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label">Semester</label>
+            <select id="add-sem" class="form-control" required>
+              <option value="S1">S1</option>
+              <option value="S3">S3</option>
+              <option value="S5">S5</option>
+              <option value="S7">S7</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Age</label>
+            <input type="number" id="add-age" class="form-control" value="20" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Blood Group</label>
+            <input type="text" id="add-blood" class="form-control" value="O+" required>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input type="email" id="add-email" class="form-control" required placeholder="student@example.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone Number</label>
+            <input type="text" id="add-phone" class="form-control" required placeholder="9876543210">
+          </div>
+        </div>
+
+        <div style="background: var(--light-bg); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--light-border); margin-top: 0.5rem;">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+            <input type="checkbox" id="add-has-website" style="width: 18px; height: 18px; cursor: pointer;">
+            <label for="add-has-website" style="font-weight: 700; cursor: pointer;">Website Extracted & Submitted in <code>submissions/{roll}/index.html</code></label>
+          </div>
+          <div id="add-website-fields" style="display: none; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.75rem;">
+            <div class="form-group" style="margin: 0;">
+              <label class="form-label">Website Title</label>
+              <input type="text" id="add-web-title" class="form-control" placeholder="e.g. Portfolio Website">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label class="form-label">Description</label>
+              <input type="text" id="add-web-desc" class="form-control" placeholder="e.g. Personal web design project">
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+          <button type="button" class="btn btn-secondary modal-cancel-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Student Record</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Edit Student Modal -->
+  <div class="modal-backdrop" id="modal-edit-student">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Edit Student Record</h3>
+        <button class="modal-close-btn">&times;</button>
+      </div>
+      <form id="form-edit-student">
+        <input type="hidden" id="edit-roll-hidden">
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input type="text" id="edit-name" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Roll Number</label>
+            <input type="text" id="edit-roll-display" class="form-control" readonly style="background: #f1f5f9; font-weight: bold;">
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label">Course Program</label>
+            <select id="edit-course" class="form-control" required>
+              <option value="B.Tech Computer Science">B.Tech Computer Science</option>
+              <option value="B.Tech Electronics & Communication">B.Tech ECE</option>
+              <option value="B.Tech Information Technology">B.Tech IT</option>
+              <option value="BCA">BCA</option>
+              <option value="MCA">MCA</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Semester</label>
+            <select id="edit-sem" class="form-control" required>
+              <option value="S1">S1</option>
+              <option value="S3">S3</option>
+              <option value="S5">S5</option>
+              <option value="S7">S7</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" id="edit-email" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone</label>
+            <input type="text" id="edit-phone" class="form-control" required>
+          </div>
+        </div>
+
+        <div style="background: var(--light-bg); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--light-border); margin-top: 0.5rem;">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+            <input type="checkbox" id="edit-has-website" style="width: 18px; height: 18px; cursor: pointer;">
+            <label for="edit-has-website" style="font-weight: 700; cursor: pointer;">Website Extracted & Submitted in <code>submissions/{roll}/index.html</code></label>
+          </div>
+          <div id="edit-website-fields" style="display: none; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.75rem;">
+            <div class="form-group" style="margin: 0;">
+              <label class="form-label">Website Title</label>
+              <input type="text" id="edit-web-title" class="form-control">
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label class="form-label">Description</label>
+              <input type="text" id="edit-web-desc" class="form-control">
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+          <button type="button" class="btn btn-secondary modal-cancel-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>© 2026 Student Web Design Showcase Portal. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

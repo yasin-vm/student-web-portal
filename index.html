@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Web Portal - Student Web Design Showcase</title>
+  <meta name="description" content="Centralized student directory and web development project showcase portal for college classroom assignments.">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="header">
+    <div class="container navbar">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">💻</div>
+        <span>Student Web Portal</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="students.html" class="nav-link">Students</a></li>
+          <li><a href="admin.html" class="nav-link nav-btn">Admin / Dashboard</a></li>
+        </ul>
+      </nav>
+
+      <button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span>✨</span> College Web Design Showcase
+          </div>
+          <h1 class="hero-title">
+            Student Web Design <span class="text-gradient">Showcase</span>
+          </h1>
+          <p class="hero-subtitle">
+            A centralized static directory where students display their creative HTML, CSS, and JavaScript web development projects and personal academic profiles.
+          </p>
+          <div class="hero-actions">
+            <a href="students.html" class="btn btn-primary">
+              🔍 View Students
+            </a>
+            <a href="#showcase-section" class="btn btn-secondary">
+              🚀 Explore Websites
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-illustration">
+          <div class="code-card-mockup">
+            <div class="mockup-header">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+              <span class="mockup-title">student-directory.js</span>
+            </div>
+            <div class="mockup-body">
+              <div><span class="code-keyword">const</span> <span class="code-var">student</span> = {</div>
+              <div style="padding-left: 1.5rem;"><span class="code-var">name</span>: <span class="code-str">"Arun Kumar"</span>,</div>
+              <div style="padding-left: 1.5rem;"><span class="code-var">rollNumber</span>: <span class="code-str">"01"</span>,</div>
+              <div style="padding-left: 1.5rem;"><span class="code-var">websiteSubmitted</span>: <span class="code-keyword">true</span>,</div>
+              <div style="padding-left: 1.5rem;"><span class="code-var">websitePath</span>: <span class="code-str">"submissions/01/index.html"</span></div>
+              <div>};</div>
+              <br>
+              <div><span class="code-func">openWebsite</span>(student.websitePath);</div>
+            </div>
+          </div>
+
+          <div class="hero-floating-badge floating-1">
+            <div style="font-size: 1.5rem;">🎓</div>
+            <div>
+              <div style="font-weight: 700; font-size: 0.9rem;">60 Students</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Active Class Directory</div>
+            </div>
+          </div>
+
+          <div class="hero-floating-badge floating-2">
+            <div style="font-size: 1.5rem;">🌐</div>
+            <div>
+              <div style="font-weight: 700; font-size: 0.9rem;">Static Submissions</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Submissions Directory</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon stat-icon-1">👥</div>
+            <div>
+              <div class="stat-number" id="stat-total">60</div>
+              <div class="stat-label">Total Students</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon stat-icon-2">🌐</div>
+            <div>
+              <div class="stat-number" id="stat-submitted">35</div>
+              <div class="stat-label">Websites Submitted</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon stat-icon-3">⏳</div>
+            <div>
+              <div class="stat-number" id="stat-pending">25</div>
+              <div class="stat-label">Pending Submissions</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon stat-icon-4">📈</div>
+            <div>
+              <div class="stat-number" id="stat-rate">58%</div>
+              <div class="stat-label">Completion Rate</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Student Website Showcase Section -->
+    <section id="showcase-section" style="padding: 5rem 0; background: var(--bg);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Student Work</span>
+          <h2 class="section-title">Submitted Website Showcase</h2>
+          <p class="section-subtitle">Explore live HTML/CSS/JS websites submitted by class students.</p>
+        </div>
+
+        <div class="showcase-grid-layout" id="showcase-grid">
+          <!-- Populated dynamically via app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Students Section -->
+    <section style="padding: 5rem 0; background: var(--light-bg);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Student Directory</span>
+          <h2 class="section-title">Featured Student Directory</h2>
+          <p class="section-subtitle">Browse student academic profiles and access their web design assignments.</p>
+        </div>
+
+        <div class="cards-grid" id="featured-students-grid">
+          <!-- Populated dynamically via app.js -->
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+          <a href="students.html" class="btn btn-outline-primary">
+            Explore All 60 Students →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why This Portal Section -->
+    <section class="features-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Portal Features</span>
+          <h2 class="section-title">Why Use This Student Portal?</h2>
+          <p class="section-subtitle">Designed specifically for classroom web development course management and peer showcasing.</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">👤</div>
+            <h3 class="feature-title">Student Profiles</h3>
+            <p class="feature-desc">Comprehensive digital records displaying student details, roll numbers, contact info, and course semesters.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🚀</div>
+            <h3 class="feature-title">Website Showcase</h3>
+            <p class="feature-desc">Direct access to live student HTML/CSS/JS website submissions opening in a new tab without broken links.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">📂</div>
+            <h3 class="feature-title">Isolated Storage</h3>
+            <p class="feature-desc">Each student's project resides in its own isolated folder (submissions/{rollNumber}/) with zero CSS cross-contamination.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">📱</div>
+            <h3 class="feature-title">Responsive Design</h3>
+            <p class="feature-desc">Flawless user interface optimized across desktop monitors, tablet displays, and mobile smartphones.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">💻 Student Web Portal</div>
+          <p style="font-size: 0.95rem; line-height: 1.6;">
+            A modern, centralized static academic directory and web design project showcase platform for computer science and engineering coursework.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="students.html">Students Directory</a></li>
+            <li><a href="admin.html">Admin Dashboard</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Courses</h4>
+          <ul class="footer-links">
+            <li><a href="students.html?course=Computer+Science">B.Tech Computer Science</a></li>
+            <li><a href="students.html?course=Electronics">B.Tech ECE</a></li>
+            <li><a href="students.html?course=Information+Technology">B.Tech IT</a></li>
+            <li><a href="students.html?course=BCA">BCA / MCA</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Academic Info</h4>
+          <p style="font-size: 0.9rem; margin-bottom: 0.75rem;">Department of Computer Science & Engineering</p>
+          <p style="font-size: 0.85rem; color: #64748b;">Classroom Web Project Submission Platform</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Student Web Design Showcase Portal. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Directory - Student Web Design Portal</title>
+  <meta name="description" content="Searchable classroom student directory with student profiles and web project submission links.">
+  <script type="module" crossorigin src="/assets/app-Bk9u4h-U.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/app-CE5dEv5z.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="header">
+    <div class="container navbar">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">💻</div>
+        <span>Student Web Portal</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="students.html" class="nav-link active">Students</a></li>
+          <li><a href="admin.html" class="nav-link nav-btn">Admin / Dashboard</a></li>
+        </ul>
+      </nav>
+
+      <button class="mobile-menu-btn" aria-label="Toggle Menu">☰</button>
+    </div>
+  </header>
+
+  <main style="padding: 3rem 0 5rem;">
+    <div class="container">
+      
+      <!-- Page Header -->
+      <div style="margin-bottom: 2.5rem;">
+        <span class="section-tag">Classroom Registry</span>
+        <h1 class="section-title" style="text-align: left;">Student Directory</h1>
+        <p class="section-subtitle" style="text-align: left; margin: 0;">
+          Explore comprehensive student profiles and launch their submitted web development projects.
+        </p>
+      </div>
+
+      <!-- Search & Filters Toolbar -->
+      <div class="directory-toolbar">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="dir-search" class="search-input" placeholder="Search by name or roll number...">
+        </div>
+
+        <div>
+          <select id="dir-course" class="select-control">
+            <option value="">All Courses</option>
+            <option value="B.Tech Computer Science">B.Tech Computer Science</option>
+            <option value="B.Tech Electronics & Communication">B.Tech ECE</option>
+            <option value="B.Tech Information Technology">B.Tech IT</option>
+            <option value="BCA">BCA</option>
+            <option value="MCA">MCA</option>
+          </select>
+        </div>
+
+        <div>
+          <select id="dir-semester" class="select-control">
+            <option value="">All Semesters</option>
+            <option value="S1">Semester 1</option>
+            <option value="S3">Semester 3</option>
+            <option value="S5">Semester 5</option>
+            <option value="S7">Semester 7</option>
+          </select>
+        </div>
+
+        <div>
+          <select id="dir-status" class="select-control">
+            <option value="">All Website Statuses</option>
+            <option value="submitted">🟢 Submitted</option>
+            <option value="null">⚪ NULL / Not Submitted</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+        <span id="directory-count" style="font-weight: 600; color: var(--text-muted);">Showing 60 students</span>
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <label for="dir-sort" style="font-size: 0.9rem; font-weight: 600; color: var(--text-muted);">Sort By:</label>
+          <select id="dir-sort" class="select-control" style="width: auto; padding: 0.4rem 0.75rem;">
+            <option value="roll-asc">Roll No (Ascending)</option>
+            <option value="roll-desc">Roll No (Descending)</option>
+            <option value="name-asc">Name (A - Z)</option>
+            <option value="name-desc">Name (Z - A)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Table View -->
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Student Name</th>
+              <th>Roll No</th>
+              <th>Course</th>
+              <th>Semester</th>
+              <th>Website Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="directory-table-body">
+            <!-- Rendered dynamically by app.js -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Empty State -->
+      <div id="directory-empty-state" class="empty-state" style="display: none;">
+        <div class="empty-icon">🔍</div>
+        <h3>No Students Found</h3>
+        <p style="color: var(--text-muted); max-width: 400px; margin: 0.5rem auto 0;">No student matches your filter or search criteria. Try adjusting your search query or filters.</p>
+      </div>
+
+      <!-- Pagination Wrap -->
+      <div id="directory-pagination"></div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>© 2026 Student Web Design Showcase Portal. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
