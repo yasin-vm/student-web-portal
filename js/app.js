@@ -648,6 +648,7 @@ document.addEventListener('DOMContentLoaded', () => {
   localStorage.removeItem('student_portal_db_v1');
   localStorage.removeItem('student_portal_db_v2');
   localStorage.removeItem('student_portal_db_v3');
+  localStorage.removeItem('student_portal_db_v4');
 
   initNavigation();
 

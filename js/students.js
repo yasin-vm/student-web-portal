@@ -2,7 +2,7 @@
    CENTRAL STUDENT DATABASE MODULE (EMPTY START FOR CUSTOM STUDENTS)
    ========================================================================== */
 
-const STORAGE_KEY = 'student_portal_db_v4';
+const STORAGE_KEY = 'student_portal_db_v5';
 
 // The class roster uses sequential portal roll numbers, not university registration numbers.
 const STUDENT_NAMES = [
@@ -69,7 +69,7 @@ const STUDENT_NAMES = [
 
 export const DEFAULT_STUDENTS = STUDENT_NAMES.map((name, index) => {
   const rollNumber = String(index + 1).padStart(2, '0');
-  const websiteSubmitted = rollNumber === '52';
+  const websiteSubmitted = rollNumber === '52' || rollNumber === '53';
 
   return {
     id: index + 1,
