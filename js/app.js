@@ -182,6 +182,7 @@ export function initDirectoryPage() {
   const courseFilter = document.getElementById('dir-course');
   const semesterFilter = document.getElementById('dir-semester');
   const statusFilter = document.getElementById('dir-status');
+  const bloodFilter = document.getElementById('dir-blood');
   const sortSelect = document.getElementById('dir-sort');
   const tableBody = document.getElementById('directory-table-body');
   const emptyState = document.getElementById('directory-empty-state');
@@ -198,6 +199,7 @@ export function initDirectoryPage() {
     const courseVal = courseFilter ? courseFilter.value : '';
     const semVal = semesterFilter ? semesterFilter.value : '';
     const statusVal = statusFilter ? statusFilter.value : '';
+    const bloodVal = bloodFilter ? bloodFilter.value : '';
     const sortVal = sortSelect ? sortSelect.value : 'roll-asc';
 
     if (query) {
@@ -212,6 +214,7 @@ export function initDirectoryPage() {
       if (statusVal === 'submitted') students = students.filter(s => s.websiteSubmitted === true);
       if (statusVal === 'null') students = students.filter(s => s.websiteSubmitted === false);
     }
+    if (bloodVal) students = students.filter(s => s.bloodGroup === bloodVal);
 
     // Sort
     students.sort((a, b) => {
@@ -310,7 +313,7 @@ export function initDirectoryPage() {
     });
   }
 
-  [searchInput, courseFilter, semesterFilter, statusFilter, sortSelect].forEach(el => {
+  [searchInput, courseFilter, semesterFilter, statusFilter, bloodFilter, sortSelect].forEach(el => {
     if (el) el.addEventListener('change', () => { currentPage = 1; renderDirectory(); });
     if (el && el.tagName === 'INPUT') el.addEventListener('input', () => { currentPage = 1; renderDirectory(); });
   });
@@ -350,6 +353,9 @@ export function initProfilePage() {
   const phoneEl = document.getElementById('prof-phone');
   const ageEl = document.getElementById('prof-age');
   const bloodEl = document.getElementById('prof-blood');
+  const cgpaEl = document.getElementById('prof-cgpa');
+  const internalMarksEl = document.getElementById('prof-internal-marks');
+  const extracurricularEl = document.getElementById('prof-extracurricular');
   const collegeEl = document.getElementById('prof-college');
   const bioEl = document.getElementById('prof-bio');
   const projectBox = document.getElementById('prof-project-box');
@@ -372,6 +378,9 @@ export function initProfilePage() {
   if (phoneEl) phoneEl.textContent = student.phone;
   if (ageEl) ageEl.textContent = `${student.age} Years`;
   if (bloodEl) bloodEl.textContent = student.bloodGroup;
+  if (cgpaEl) cgpaEl.textContent = student.cgpa || 'Not provided';
+  if (internalMarksEl) internalMarksEl.textContent = student.internalMarks || 'Not provided';
+  if (extracurricularEl) extracurricularEl.textContent = student.extracurricular || 'Not provided';
   if (collegeEl) collegeEl.textContent = "Department of Computer Science & Engineering";
   if (bioEl) bioEl.textContent = `${student.name} is a student pursuing ${student.course} currently in semester ${student.semester}.`;
 
@@ -635,11 +644,10 @@ export function initAdminPage() {
 
 // Global Auto-Init based on current page
 document.addEventListener('DOMContentLoaded', () => {
-  // Clear old storage keys if present to ensure clean empty start
+  // Ignore legacy browser-only data so the committed roster is used.
   localStorage.removeItem('student_portal_db_v1');
-  if (!localStorage.getItem('student_portal_db_v2')) {
-    StudentDB.save([]);
-  }
+  localStorage.removeItem('student_portal_db_v2');
+  localStorage.removeItem('student_portal_db_v3');
 
   initNavigation();
 

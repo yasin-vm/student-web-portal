@@ -2,10 +2,96 @@
    CENTRAL STUDENT DATABASE MODULE (EMPTY START FOR CUSTOM STUDENTS)
    ========================================================================== */
 
-const STORAGE_KEY = 'student_portal_db_v2';
+const STORAGE_KEY = 'student_portal_db_v4';
 
-// Empty default dataset - ready for user to add real students
-export const DEFAULT_STUDENTS = [];
+// The class roster uses sequential portal roll numbers, not university registration numbers.
+const STUDENT_NAMES = [
+  'ABHIRAM ANIL P.A',
+  'ADWAITH K',
+  'AKASH P S',
+  'AMEGHA S',
+  'ANANDU M',
+  'ANANYA MOHAN N',
+  'ANJANA K',
+  'ANJANA RAJ R',
+  'ANJITHA V',
+  'ATHUL K SANDEEP',
+  'ATHUL RAJ',
+  'FATHIMA RIZA ERSHAD',
+  'FATHIMA SABA M',
+  'FATHIMATH SAHDIYA C',
+  'FATHIMATH SHIFANA T V',
+  'FATHIMATHU SUHADHA K V',
+  'FATHIMA ZIYA',
+  'FIDHA FATHIMA T',
+  'GOPIKA T K',
+  'HREDYA M',
+  'HRIDUSH PRAKASH',
+  'JEROME JIMMY',
+  'KENZAH RAFFY K',
+  'KRISHNA SAJEEVAN',
+  'MARJANA K P',
+  'MISHAL MAJEED K V',
+  'MOHAMMED AZEEM SAMBRATH',
+  'MUHAMMAD NIHAL',
+  'MUHAMMED FINAS NOUFAL A P',
+  'MUHAMMED MAZIN K P',
+  'MUHAMMED THAHA K T',
+  'MUHAMMED ZAID O V',
+  'N LIYA RAZAK',
+  'RAYA FATHIMA',
+  'RISNA RAFEEQ B M',
+  'RIYA P P',
+  'RIZA MEHAK',
+  'ROSHNI K',
+  'SABAH SHAMEER',
+  'SANKEERTHANA P',
+  'SAYANAND M P',
+  'SAYAND A N',
+  'SAYYIDHA SHERIN K',
+  'SHIJAS SHABEER K P',
+  'SHIVADHA R',
+  'SHYAMJITH M',
+  'SOUMMYAKEERTHI K S',
+  'SWETHA V',
+  'YADHU SAGAR N',
+  'YADU DEV M',
+  'YASHIKA PRASANTH',
+  'YASIN V M',
+  'ZAID IBNU ABDUL GAFOOR',
+  'MARIYAM P',
+  'AKASH P M',
+  'AKSHARA K M',
+  'ANJANA K',
+  'ANUSREE PRAKASHAN',
+  'ASRITHA S NATH'
+];
+
+export const DEFAULT_STUDENTS = STUDENT_NAMES.map((name, index) => {
+  const rollNumber = String(index + 1).padStart(2, '0');
+  const websiteSubmitted = rollNumber === '52';
+
+  return {
+    id: index + 1,
+    name,
+    rollNumber,
+    age: 20,
+    bloodGroup: '',
+    cgpa: '',
+    internalMarks: '',
+    extracurricular: '',
+    course: 'B.Tech Computer Science',
+    semester: 'S7',
+    email: '',
+    phone: '',
+    profileImage: `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=4f46e5&color=fff`,
+    websiteSubmitted,
+    websiteTitle: websiteSubmitted ? 'Yasin V M | Student Profile' : `${name}'s Web Project`,
+    websiteDescription: websiteSubmitted ? 'HTML, CSS, and JavaScript student profile assignment.' : 'Student web development assignment.',
+    submissionDate: websiteSubmitted ? '2026-09-08' : null,
+    websitePath: `submissions/${rollNumber}/index.html`
+  };
+});
 
 // Student Data Controller API with LocalStorage Persistence
 export const StudentDB = {
@@ -62,6 +148,9 @@ export const StudentDB = {
       rollNumber: rollStr,
       age: parseInt(studentData.age) || 20,
       bloodGroup: studentData.bloodGroup || 'O+',
+      cgpa: studentData.cgpa || '',
+      internalMarks: studentData.internalMarks || '',
+      extracurricular: studentData.extracurricular || '',
       course: studentData.course,
       semester: studentData.semester,
       email: studentData.email,
