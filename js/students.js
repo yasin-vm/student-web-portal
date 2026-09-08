@@ -69,7 +69,7 @@ const STUDENT_NAMES = [
 
 export const DEFAULT_STUDENTS = STUDENT_NAMES.map((name, index) => {
   const rollNumber = String(index + 1).padStart(2, '0');
-  const websiteSubmitted = rollNumber === '52' || rollNumber === '53';
+  const websiteSubmitted = rollNumber === '52';
 
   return {
     id: index + 1,
@@ -102,7 +102,17 @@ export const StudentDB = {
       return DEFAULT_STUDENTS;
     }
     try {
-      return JSON.parse(raw);
+      const students = JSON.parse(raw);
+      const staleSubmission = students.find(student => String(student.rollNumber).padStart(2, '0') === '53');
+      if (staleSubmission?.websiteSubmitted) {
+        staleSubmission.websiteSubmitted = false;
+        staleSubmission.websiteTitle = null;
+        staleSubmission.websiteDescription = null;
+        staleSubmission.submissionDate = null;
+        staleSubmission.websitePath = null;
+        this.save(students);
+      }
+      return students;
     } catch (e) {
       console.error("Failed to parse student data, resetting to empty list", e);
       this.save(DEFAULT_STUDENTS);
